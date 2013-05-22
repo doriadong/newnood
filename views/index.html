@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="/javascripts/renren.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var uiOpts = {
+        url : "http://graph.renren.com/oauth/authorize",
+        display : "iframe",
+//        params : {"response_type":"token","client_id":"234485", "redirect_uri":"http://apps.renren.com/chaozuoye"}, //web 站内授权跳转
+        params : {"response_type":"token","client_id":"234483", "redirect_uri":"http://hi.baidu.com/hellow3c"},
+        onSuccess: function(r){
+            top.location = "http://weibo.com/1769038103/profile?topnav=1&wvr=5";
+        },
+        onFailure: function(r){  }
+    };
+    Renren.ui(uiOpts);
+</script>
+
+<div>
+	<FORM action="/review/add" method="post">
+	    <P>
+            用户id:<INPUT type="text" name="userId"><BR>
+            点评内容: <INPUT type="text" name="reviewBody"><BR>
+            json string: <INPUT type="text" name="jsonString"><BR>
+	        <INPUT type="submit" value="Send">  
+	    </P>  
+	</FORM> 
+</div> 
+
+<div>
+	<FORM action="/review/addWithFile" method="post" enctype="multipart/form-data" >
+	    <P>
+            userId: <INPUT type="text" name="userId"><BR>
+            reviewBody: <INPUT type="text" name="reviewBody"><BR>
+	        file: <INPUT type="file" name="imgfile"><BR>
+	        <INPUT type="submit" value="Send">  
+	    </P>
+</FORM> 
+</div>
+
+<div><img src="/images/gldbly.png" alt=""></div>
+</body>
+</html>

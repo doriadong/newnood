@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div>welcome! you success</div>
+<div>
+	<FORM action="/review/add" method="post">
+	    <P>
+            用户id:<INPUT type="text" name="userId"><BR>
+            点评内容: <INPUT type="text" name="reviewBody"><BR>
+            json string: <INPUT type="text" name="jsonString"><BR>
+	        <INPUT type="submit" value="Send">  
+	    </P>  
+	</FORM> 
+</div> 
+
+<div>
+	<FORM action="/review/addWithFile" method="post" enctype="multipart/form-data" >
+	    <P>
+            userId: <INPUT type="text" name="userId"><BR>
+            reviewBody: <INPUT type="text" name="reviewBody"><BR>
+	        file: <INPUT type="file" name="imgfile"><BR>
+	        <INPUT type="submit" value="Send">  
+	    </P>  
+</FORM> 
+</div>
+</body>
+</html>
