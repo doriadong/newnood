@@ -21,4 +21,4 @@ db.open(function(err, db) {
     }
 });
 
-exports.dbClient=db;
+exports.dbClient = db;

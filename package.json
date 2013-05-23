@@ -10,6 +10,7 @@
     "jade": "*",
     "mongodb": "0.9.9-8",
     "redis":"*",
-    "socket.io":"*"
+    "socket.io":"*",
+    "mongoose":"*"
   }
 }
