@@ -14,7 +14,10 @@ var typeDeterminer = function(key){
         if(location > -1){
             var type = key.substr(location+1);
             var newKey = key.substr(0, location);
-            return type;
+            return {
+                'type':type,
+                'newKey':newKey
+            }
         }else{
             return 'NoNeed';
         }
@@ -27,17 +30,23 @@ var typeDeterminer = function(key){
 var iteratorTreatObject = function(obj){
     if(obj !== null && typeof obj === 'object'){
         for(var key in obj){
-            var type = typeDeterminer(key);
-            if(type !== 'NoNeed'){
-                switch (type){
+            var result = typeDeterminer(key);
+            if(result !== 'NoNeed'){
+                switch (result.type){
                     case 'Number':
                         var convertValue = numberConverterValue(obj[key]);
+                        obj[result.newKey] = convertValue;
+                        delete obj[key];
                         break;
                     case 'Date':
-                        obj[key] = obj[key]+'_Date';
+                        var convertValue = dateConverterValue(obj[key]);
+                        obj[result.newKey] = convertValue;
+                        delete obj[key];
                         break;
                     case 'Boolean':
-                        obj[key] = obj[key]+'_Boolean';
+                        var convertValue = booleanConverterValue(obj[key]);
+                        obj[result.newKey] = convertValue;
+                        delete obj[key];
                         break;
                     default :
                         ;
@@ -55,13 +64,35 @@ var iteratorTreatObject = function(obj){
 
 
 var numberConverterValue = function(str){
-    if(str != null && typeof str === 'string'){
+    if(str !== null && typeof str === 'string'){
         num = Number(str);
         if(isNaN(num)){
             throw new Error('invalid param');
         }else{
             return num;
         }
+    }else{
+        throw new Error('invalid param');
+    }
+}
+
+var booleanConverterValue = function(str){
+    if(str !== null && typeof str === 'string'){
+        if(str === 'true'){
+            return true;
+        }else if(str === 'false'){
+            return false;
+        }else{
+            throw new Error('invalid param');
+        }
+    }else{
+        throw new Error('invalid param');
+    }
+}
+
+var dateConverterValue = function(str){
+    if(str !== null && typeof str === 'string'){
+        return new Date(str);
     }else{
         throw new Error('invalid param');
     }
