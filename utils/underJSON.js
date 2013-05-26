@@ -54,7 +54,7 @@ var convertTreat = function(value, key, obj){
         }
     }else{
         if(value !== null && _.isArray(value)){
-            _.each(value, iteratorTreatObject)
+            _.each(value, iteratorTreatObject);
         }else if(value !== null && _.isObject(value) ){
             iteratorTreatObject(value);
         }
@@ -63,47 +63,14 @@ var convertTreat = function(value, key, obj){
 
 var iteratorTreatObject = function(obj){
     if(obj !== null && typeof obj === 'object'){
-
         _.each(obj , convertTreat);
-
-
-
-//        for(var key in obj){
-//            var result = typeDeterminer(key);
-//            if(result !== 'NoNeed'){
-//                switch (result.type){
-//                    case 'Number':
-//                        var convertValue = numberConverterValue(obj[key]);
-//                        obj[result.newKey] = convertValue;
-//                        delete obj[key];
-//                        break;
-//                    case 'Date':
-//                        var convertValue = dateConverterValue(obj[key]);
-//                        obj[result.newKey] = convertValue;
-//                        delete obj[key];
-//                        break;
-//                    case 'Boolean':
-//                        var convertValue = booleanConverterValue(obj[key]);
-//                        obj[result.newKey] = convertValue;
-//                        delete obj[key];
-//                        break;
-//                    default :
-//                        ;
-//                }
-//            }else{
-//                var value = obj[key];
-//                if(value !== null && typeof value === 'object'){
-//                    iteratorTreatObject(value);
-//                }
-//            }
-//        }
     }
 }
 
 
 
 var numberConverterValue = function(str){
-    if(str !== null && typeof str === 'string'){
+    if( ! _.isNull(str) && _.isString(str) ){
         num = Number(str);
         if(isNaN(num)){
             throw new Error('invalid param');
@@ -116,7 +83,7 @@ var numberConverterValue = function(str){
 }
 
 var booleanConverterValue = function(str){
-    if(str !== null && typeof str === 'string'){
+    if( ! _.isNull(str) && _.isString(str) ){
         if(str === 'true'){
             return true;
         }else if(str === 'false'){
@@ -130,7 +97,7 @@ var booleanConverterValue = function(str){
 }
 
 var dateConverterValue = function(str){
-    if(str !== null && typeof str === 'string'){
+    if( ! _.isNull(str) && _.isString(str) ){
         return new Date(str);
     }else{
         throw new Error('invalid param');

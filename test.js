@@ -10,7 +10,7 @@
 
 //testPath.testPath();
 
-
+var _ = require('underscore');
 
 var util = require('util');
 var schema = require('schemajs');
@@ -18,7 +18,7 @@ var schema = require('schemajs');
 var reviewDemoStr = '\
 {\
     "reviewId" : "133",\
-    "addTime" : "Sat May 25 2013 19:03:37 GMT+0800 (CST)",\
+    "addTime_Date" : "Sat May 25 2013 19:03:37 GMT+0800 (CST)",\
     "reviewBody" : "图灵程序设计丛书:iOS 6编程实战》急开发者之所急，揭秘了多数开发类图书未曾展示过的iOS 6高级特性和开发技巧，带你深入了解iOS 6。",\
     "price" : { "priceTitle" : "价格", "priceValue_Number" : "34", "unit" : "元" },\
     "scores" : [\
@@ -81,5 +81,9 @@ console.log(util.inspect(result2));
 //var newDate = new Date(date);
 //console.log(typeof newDate);
 //console.log(newDate.getDate());
+
+//var a = 'a';
+//var b = 'b';
+//console.log(! _.isNull(a) && b === 'b');
 
 
