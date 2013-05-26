@@ -64,7 +64,7 @@ exports.findReviewByID = function(req, res){
             {scoreTitle:'服务', scoreValue:3, scoreDescribe:'好'}
         ]
     }
-    //console.log(req);
+    console.log(req);
     //console.log(review);
     //if(req.params.id == review.reviewId){ //params: [ id: '110' ]  String类型的 转型匹配的
     if(parseInt(req.params.id) === review.reviewId){

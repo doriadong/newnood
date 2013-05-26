@@ -13,6 +13,7 @@
 
 
 var util = require('util');
+var schema = require('schemajs');
 
 var reviewDemoStr = '\
 {\
@@ -28,6 +29,7 @@ var reviewDemoStr = '\
     "tags" : [ { "tagTitle" : "餐厅氛围", "isGood_Boolean" : "true", "tagValueList" : [ "商务宴请", "朋友聚会" ]  } ]\
 }';
 
+
 //var reviewDemoStr = util.inspect(reviewDemo);
 
 
@@ -37,7 +39,7 @@ var reviewDemoStr = '\
 var conversion = require('./utils/conversion');
 
 var result1 = conversion.convertFromJsonString(reviewDemoStr);
-console.log(util.inspect(result1));
+//console.log(util.inspect(result1));
 
 //var obj = {a:'test',b:20, c:new Date()};
 //console.log(typeof obj);
@@ -76,4 +78,5 @@ console.log(util.inspect(result1));
 //var newDate = new Date(date);
 //console.log(typeof newDate);
 //console.log(newDate.getDate());
+
 

@@ -33,6 +33,7 @@ app.get('/', routes.index);
 app.get('/success', routes.success);
 app.get('/users', user.list);
 
+app.get('/reviewLookRequestContent/:id', review.findReviewByID);
 app.get('/review/:id', review.findReviewByIDFromDB);
 app.post('/review/add', review.addReview);
 //app.get('/review/add?', review.addReview); //for test

@@ -120,5 +120,5 @@ exports.convertFromJsonString = convertFromJsonString;
 exports.convertFromObj = convertFromObj;
 
 
-//console.log(getType('12345_int'));
+
 

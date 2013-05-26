@@ -12,6 +12,8 @@ var util = require('util');
 var mongoose = require('./mongooseClient').mongoose;
 var mongooseSchema = require('./mongooseSchema');
 
+var schemajs = require('schemajs');
+
 var reviewSchema = mongooseSchema.reviewSchema;
 
 var reviewDemo =
@@ -26,6 +28,19 @@ var reviewDemo =
     ],
     "tags" : [ { "tagTitle" : "餐厅氛围", "tagValueList" : [ "商务宴请", "朋友聚会" ]  } ]
 }
+
+var reviewModel = schemajs.create(
+    {
+        reviewId : { type:'int', filters:['trim', 'toInt'], required:true, error:'review must has a reviewId' },
+        price : {
+            type:'object',
+            schema:{
+                priceValue : { type:'float', filters:['trim', 'toFloat'], properties:{min:0}, error:'priceValue is not a valid priceValue' }
+            }
+        }
+    }
+);
+
 
 var addReview = function(){
     var Review = mongoose.model('reviews', reviewSchema);
@@ -50,7 +65,7 @@ var findAndModify = function(reviewId){
 
 
 //addReview();
-findAndModify(133);
-
-
+//findAndModify(133);
+var form = reviewModel.validate(reviewDemo);
+console.log(util.inspect(form.data));
 
