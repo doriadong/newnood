@@ -37,9 +37,12 @@ var reviewDemoStr = '\
 //console.log(reviewDemoStr);
 
 var conversion = require('./utils/conversion');
-
 var result1 = conversion.convertFromJsonString(reviewDemoStr);
-//console.log(util.inspect(result1));
+
+var underJSON = require('./utils/underJSON');
+var result2 = underJSON.convertFromJsonString(reviewDemoStr);
+
+console.log(util.inspect(result2));
 
 //var obj = {a:'test',b:20, c:new Date()};
 //console.log(typeof obj);

@@ -12,6 +12,7 @@
     "redis":"*",
     "socket.io":"*",
     "mongoose":"*",
-    "schemajs":"*"
+    "schemajs":"*",
+    "underscore":"*"
   }
 }
