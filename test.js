@@ -42,7 +42,10 @@ var result1 = conversion.convertFromJsonString(reviewDemoStr);
 var underJSON = require('./utils/underJSON');
 var result2 = underJSON.convertFromJsonString(reviewDemoStr);
 
-console.log(util.inspect(result2));
+var underType = require('./utils/underType');
+var result3 = underType.convertFromJsonString(reviewDemoStr);
+
+console.log(util.inspect(result3));
 
 //var obj = {a:'test',b:20, c:new Date()};
 //console.log(typeof obj);
@@ -68,10 +71,12 @@ console.log(util.inspect(result2));
 //var array = [{a:2},{b:'test'}];
 //for(var key in array){
 //    //if(obj.hasOwnProperty(key)){
-//        console.log(typeof array[key]);
+//    console.log(key);
+//    console.log(typeof key);
+//    console.log(typeof array[key]);
 //    //}
 //}
-//console.log(typeof null);
+//console.log(typeof 1);
 //console.log(isNaN(Number('3.5rrrr')));
 //console.log(Boolean('false')); //useless
 //var date = new Date();
@@ -85,5 +90,8 @@ console.log(util.inspect(result2));
 //var a = 'a';
 //var b = 'b';
 //console.log(! _.isNull(a) && b === 'b');
+
+//console.log(JSON.parse(''));
+//console.log('' !== '');
 
 

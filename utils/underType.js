@@ -1,12 +1,11 @@
 /**
  * Created with JetBrains WebStorm.
  * User: liangjun.zhong
- * Date: 13-5-24
- * Time: PM1:24
+ * Date: 13-5-28
+ * Time: AM12:53
  * To change this template use File | Settings | File Templates.
  */
 
-var util = require('util');
 
 var typeDeterminer = function(key){
     if(key !== null && typeof key === 'string'){
@@ -19,19 +18,18 @@ var typeDeterminer = function(key){
                 'newKey':newKey
             }
         }else{
-            return 'NoNeed';
+            return 'Needless';
         }
     }else{
         throw new Error('invalid param');
     }
 }
 
-
-var iteratorTreatObject = function(obj){
+var iteratorTrimObject = function(obj){
     if(obj !== null && typeof obj === 'object'){
         for(var key in obj){
             var result = typeDeterminer(key);
-            if(result !== 'NoNeed'){
+            if(result !== 'Needless'){
                 switch (result.type){
                     case 'Number':
                         var convertValue = numberConverterValue(obj[key]);
@@ -54,14 +52,14 @@ var iteratorTreatObject = function(obj){
             }else{
                 var value = obj[key];
                 if(value !== null && typeof value === 'object'){ //value is Array or Object
-                    iteratorTreatObject(value);
+                    iteratorTrimObject(value);
                 }
             }
         }
+    }else{
+        throw new Error('invalid param');
     }
 }
-
-
 
 var numberConverterValue = function(str){
     if(str !== null && typeof str === 'string'){
@@ -99,9 +97,9 @@ var dateConverterValue = function(str){
 }
 
 var convertFromJsonString = function(jsonString){
-    if(jsonString != null && typeof jsonString === 'string'){
+    if(jsonString !== null && jsonString !== '' && typeof jsonString === 'string'){
         var obj = JSON.parse(jsonString);
-        iteratorTreatObject(obj);
+        iteratorTrimObject(obj);
         return obj;
     }else{
         throw new Error('invalid param');
@@ -109,8 +107,10 @@ var convertFromJsonString = function(jsonString){
 }
 
 var convertFromObj = function(obj){
-    if(typeof convertFromObj === 'object'){
-        return iteratorTreatObject(obj);
+    if(obj !== null && typeof convertFromObj === 'object'){
+        return iteratorTrimObject(obj);
+    }else if(obj === null){
+        return null;
     }else{
         throw new Error('invalid param');
     }
@@ -119,6 +119,9 @@ var convertFromObj = function(obj){
 exports.convertFromJsonString = convertFromJsonString;
 exports.convertFromObj = convertFromObj;
 
-
-
-
+exports.middleware = function(){
+    return function(req, res, next){
+        req.body = convertFromObj(req.body);
+        next();
+    }
+}

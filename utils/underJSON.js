@@ -28,9 +28,6 @@ var typeDeterminer = function(key){
 }
 
 var convertTreat = function(value, key, obj){
-//    console.log(typeof value);console.log(value);
-//    console.log(typeof key);console.log(key);
-//    console.log('-----------------------------------');
     var result = typeDeterminer(key);
     if(result !== 'NoNeed'){
         switch (result.type){
@@ -71,7 +68,7 @@ var iteratorTreatObject = function(obj){
 
 var numberConverterValue = function(str){
     if( ! _.isNull(str) && _.isString(str) ){
-        num = Number(str);
+        var num = Number(str);
         if(isNaN(num)){
             throw new Error('invalid param');
         }else{
