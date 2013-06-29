@@ -68,14 +68,16 @@ console.log(util.inspect(result3));
 //console.log('ooo'.lastIndexOf('_'));
 //console.log(typeof []);
 //console.log([] instanceof Array);
-//var array = [{a:2},{b:'test'}];
-//for(var key in array){
-//    //if(obj.hasOwnProperty(key)){
-//    console.log(key);
-//    console.log(typeof key);
-//    console.log(typeof array[key]);
-//    //}
-//}
+var array = [{a:2},{b:'test'}];
+//var array = [1,2,3,4,5,6];
+Object.prototype.name = 'zhong';
+for(var key in array){
+    //if(obj.hasOwnProperty(key)){
+    console.log(key);
+    console.log(typeof key);
+    console.log(array[key]);
+    //}
+}
 //console.log(typeof 1);
 //console.log(isNaN(Number('3.5rrrr')));
 //console.log(Boolean('false')); //useless

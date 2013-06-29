@@ -11,6 +11,8 @@ var express = require('express')
 
 var review = require('./routes/review');
 
+var mvc = require('./routes/mvc');
+
 var app = express();
 
 app.configure(function(){
@@ -32,6 +34,11 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/success', routes.success);
 app.get('/users', user.list);
+
+
+app.get('/mvc/index', mvc.mvcIndex);
+app.post('/person', mvc.updatePerson);
+app.get('/person', mvc.getPerson);
 
 app.get('/reviewLookRequestContent/:id', review.findReviewByID);
 app.get('/review/:id', review.findReviewByIDFromDB);
