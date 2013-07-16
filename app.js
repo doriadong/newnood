@@ -10,6 +10,7 @@ var express = require('express')
   , path = require('path');
 
 var review = require('./routes/review');
+var tweekService = require('./routes/tweekService');
 
 var mvc = require('./routes/mvc');
 
@@ -34,6 +35,13 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/success', routes.success);
 app.get('/users', user.list);
+
+
+
+app.get('/tweek', routes.tweek);
+app.post('/tweek/add', tweekService.addTweek);
+
+
 
 
 app.get('/mvc/index', mvc.mvcIndex);

@@ -15,7 +15,7 @@ define(
             url: '/person',
             //url: '/person' + getPersonId(),
             initialize: function(){
-                alert('create one account');
+                //alert('create one account');
 //                this.bind('change:name', this.save);
 //                this.bind('error', this.log);
 //                this.bind('invalid', this.log);
@@ -30,7 +30,7 @@ define(
                 if(this.get('name') === null){
                     return 'account can not without name!'
                 }else{
-                    alert('validate pass');
+                    console.log('validate pass');
                 }
             },
 

@@ -1,0 +1,209 @@
+body {
+	margin: 0px;
+}
+
+.b2i {
+    display: inline-block;
+}
+.clear-both {
+    clear: both;
+}
+
+div#logo {
+	position: fixed;
+	top: 0px;
+	margin-top: 0px;
+	width: 100%;
+	min-height: 40px;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 10;
+
+	border-bottom-style: ridge;
+	/*border-bottom-width: 2px;*/
+	border-bottom-color: rgba(227, 135, 146, 0.8);
+}
+
+
+/*************************** navigation begin *******************************/
+#navigation {
+	float: left;
+	/*position: fixed;*/
+	margin-top: 40px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+	width: 20%;
+
+	min-height: 900px;
+
+	text-align: right;
+	border-right-style: groove;
+
+}
+
+#navigation-content {
+	float: right;
+    
+	margin-right: 30px;
+	margin-top: 10px;
+	width: 165px;
+
+	/*padding: 10px;*/
+
+	border-top: solid;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+
+	-moz-box-shadow: 0 0 10px #777777;
+	-webkit-box-shadow: 0 0 10px #777777;
+	box-shadow: 0 0 10px #777777;
+
+}
+
+#navigation ul { /*后代选择器*/
+    list-style-type: none;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#navigation li {
+    padding: 3px;
+}
+#navigation li:hover {
+    background-color: rgba(245, 245, 245, 0.8);
+}
+
+#navigation a {
+    margin: 0px 10px 0px 0px;
+    text-decoration: none;
+
+    font-family: "arial","sans-serif";
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+}
+#navigation a:hover {
+    text-decoration: underline;
+
+    color: #e47911;
+    font-weight: bold;
+}
+#navigation a:active {
+    text-decoration: underline;
+}
+
+/*************************** navigation end *******************************/
+
+
+/*************************** box begin *******************************/
+
+div#box-center {
+    float: left;
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 45%;
+
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.div-left {
+    margin-left: 10px;
+    float: left;
+}
+.div-right {
+    margin-right: 10px;
+    float: right;
+}
+
+#talk-content-wrap {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 4px;
+}
+
+textarea#talk-content {
+    font-size: 14px;
+    font-family: Tahoma, '宋体';
+    padding: 8px;
+    width: 100%;
+    height: 90px;
+
+    border-radius: 6px;
+    border-color: rgba(182, 182, 182, 1);
+    outline: 0;
+    resize: none;
+
+}
+
+textarea#talk-content:focus {
+    border: 1.5px solid rgba(254, 228, 169, 1);
+}
+
+#talk-publish {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 4px;
+}
+
+#publish-button-wrap {
+    margin: 0px;
+}
+
+input#publish-button {
+    font-family: '宋体';
+    font-size: 16px;
+    /*color: red;*/
+}
+
+
+
+
+#new-feed-listener {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 4px;
+    border: 1px solid rgba(254, 228, 169, 1);
+    background-color: rgba(254, 253, 237, 1);
+    text-align: center;
+}
+
+#new-feed-listener a {
+    font-size: 13px;
+    font-family: Tahoma, '宋体';
+    text-decoration: none;
+    color: #e47911;
+}
+#new-feed-listener a:hover {
+    text-decoration: underline;
+}
+
+
+
+#feed-list-box {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /*padding: 4px;*/
+
+    font-size: 14px;
+    font-family: Tahoma, '宋体';
+}
+
+
+
+div#box-right {
+    float: left;
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 15%;
+}
+
+
+
+/*************************** box end *******************************/

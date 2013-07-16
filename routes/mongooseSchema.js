@@ -40,5 +40,21 @@ var reviewSchema = new Schema({
 });
 
 
+var TweekSchema = new Schema({
+
+    //tweekId : Number,
+    userId : Number,
+    tweekBody : String,
+    addTime : { type: Date, default: Date.now},
+    lastTime : { type: Date, default: Date.now},
+    commentNum : { type: Number, default: 0},
+    VoteNum : { type: Number, default: 0}
+
+});
+
+
+
+
 
 exports.reviewSchema = reviewSchema;
+exports.TweekSchema = TweekSchema;

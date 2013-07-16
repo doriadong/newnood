@@ -19,7 +19,7 @@ exports.updatePerson = function(req, res){
     //var id = req.params.id;
     var person = req.body;
     console.log('change name so save it !');
-    console.log('get id :' + id);
+    //console.log('get id :' + id);
     console.log(util.inspect(person));
     res.end(util.inspect(person));
 }
