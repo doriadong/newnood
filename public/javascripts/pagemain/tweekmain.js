@@ -13,7 +13,11 @@ require.config({
         jquery : '../lib/jquery/jquery-min',
         underscore : '../lib/underscore/underscore-min',
         backbone : '../lib/backbonejs/backbone',
-        Tweek : '../backbone_models/tweek'
+        Tweek : '../backbone_models/tweek',
+        TweekList : '../backbone_collections/tweeklist',
+        //TweekListTemplate : 'text!../../templates/tweeklist.html',
+        //TweekListTemplate : 'text!../templates/tweeklist.html',
+        TweekListView : '../backbone_views/tweeklistView'
 //        Friends : '../backbone_collections/friend'
     },
 
@@ -29,19 +33,47 @@ require.config({
 
 require(
     [
-        'Tweek'
+        'Tweek',
+        'TweekList',
+        'TweekListView',
+        'text!../templates/tweeklist.html'
     ],
-    function(Tweek){
-
-
+    function(Tweek, TweekList, TweekListView, testText){
+        //testModelSave(Tweek);
+        //testCollectionFetch(TweekList);
+        testView(TweekListView);
     }
 );
+
+var testView = function(TweekListView){
+    var view = new TweekListView({el:'#feed-list-box'});
+    view.render();
+}
+
+var testCollectionFetch = function(TweekList){
+    var tweeklist = new TweekList();
+    tweeklist.action = 'get';
+    tweeklist.fetch(
+        {
+            data : {
+                page : 1
+            },
+            success : function(collection, response, options){
+                console.log('success '+JSON.stringify(response));
+            },
+            error : function(collection, response, options){
+                console.log('error '+JSON.stringify(response));
+            }
+        }
+    );
+}
 
 /**测试model save方法 */
 var testModelSave = function(Tweek){
     var tweek = new Tweek();
+    tweek.action = 'add';
     tweek.save(
-        {'VoteNum':20},
+        {},
         {
             //wait: true,
             success : function(model,response){

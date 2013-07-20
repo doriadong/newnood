@@ -1,32 +1,30 @@
 /**
  * Created with JetBrains WebStorm.
  * User: liangjun.zhong
- * Date: 13-7-14
- * Time: PM11:02
+ * Date: 13-7-17
+ * Time: PM8:24
  * To change this template use File | Settings | File Templates.
  */
 
-
 define (
+
     [
-        'backbone'
+        'backbone',
+        'Tweek'
     ],
-    function(){
-        var Tweek = Backbone.Model.extend(
+    function(_backbone, Tweek){
+        var TweekList = Backbone.Collection.extend(
             {
-                idAttribute : '_id',
+                model : Tweek,
                 action : 'create',
                 url : function(){
                     var u = null;
                     switch(this.action){
-                        case 'create':
-                            u = '';
-                            break;
                         case 'get':
-                            u = '';
+                            u = '/feed';  // .../feed?page=1
                             break;
                         case 'add':
-                            u = '/tweek/add';
+                            u = '';
                             break;
                         case 'update':
                             u = '';
@@ -39,19 +37,11 @@ define (
                 },
                 initialize : function(){
 
-                },
-                defaults: {
-                    'userId' : Math.floor((Math.random()*10000)+1),
-                    'headImg' : '/images/default.png',
-                    'tweekBody' : '今天多喝水哈！'
                 }
-//                parse: function(resp, options) {
-//                    console.log('resp:---------')
-//                    console.log(JSON.stringify(resp));
-//                    return resp;
-//                }
             }
         );
-        return Tweek;
+        return TweekList;
     }
+
+
 );

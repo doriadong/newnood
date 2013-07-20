@@ -1,0 +1,15 @@
+
+
+<% _.each(tweeklist, function(tweek) { %>
+
+    <div id="tweek<%= tweek.userId%>">
+        <div><%= tweek.userId%></div>
+        <div><%= tweek.headImg%></div>
+        <div><%= tweek.tweekBody%></div>
+        <div><%= tweek.addTime%></div>
+    </div>
+    <div>-----------------</div>
+
+<% }); %>
+
+

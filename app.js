@@ -40,6 +40,7 @@ app.get('/users', user.list);
 
 app.get('/tweek', routes.tweek);
 app.post('/tweek/add', tweekService.addTweek);
+app.get('/feed', tweekService.getFeedByPage);
 
 
 

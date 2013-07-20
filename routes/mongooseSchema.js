@@ -44,6 +44,7 @@ var TweekSchema = new Schema({
 
     //tweekId : Number,
     userId : Number,
+    headImg : String,
     tweekBody : String,
     addTime : { type: Date, default: Date.now},
     lastTime : { type: Date, default: Date.now},
