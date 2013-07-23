@@ -1,10 +1,11 @@
 /**
  * Created with JetBrains WebStorm.
  * User: liangjun.zhong
- * Date: 13-7-19
- * Time: PM8:50
+ * Date: 13-7-23
+ * Time: PM9:01
  * To change this template use File | Settings | File Templates.
  */
+
 
 define (
 
@@ -12,55 +13,49 @@ define (
         'backbone',
         'Tweek',
         'TweekList',
-        //'TweekListTemplate'
         'text!../templates/tweeklist.html'
     ],
     function(_backbone, Tweek, TweekList, TweekListTemplate){
         var TweekListView = Backbone.View.extend(
             {
-                checkScroll : function (){
-                    //that.page = that.page + 1;
-                    //console.log('that.getPage()');
-                },
+                el : $(window),//'window',  // remember that the event listeners can only be attached to child elements of the 'el' property
+                page : 1,
                 initialize : function(){
-                    page : 1
-                    $(window).bind('scroll', this.checkScroll);
-//                    var self = this;
-//                    $(window).bind('scroll', function (self) {
-//                        self.checkScroll(self);
-//                    });
+                    //page : 1
+                    this.tweeklist = new TweekList();
                 },
                 setPage : function(n){
                     this.page = n;
                 },
-                getPage : function(){
-                    return this.page;
+                events : {
+                    scroll : 'checkScroll'
+                },
+                checkScroll : function (){
+                    this.page = this.page + 1;
+                    console.log(this.page);
                 },
                 render : function(){
                     var that = this; // view上下文
 
-                    var tweeklist = new TweekList();
-                    tweeklist.action = 'get';
-                    tweeklist.fetch(
+                    //var tweeklist = new TweekList();
+                    this.tweeklist.action = 'get';
+                    this.tweeklist.fetch(
                         {
                             data : {
                                 page : that.page
                             },
                             success : function(collection, response, options){
-                                console.log('success '+JSON.stringify(response));
+                                console.log('success collection :'+JSON.stringify(collection))
+                                console.log('success response :'+JSON.stringify(response));
                                 var compiledTemplate = _.template(TweekListTemplate, {'tweeklist':response});
-                                $(that.el).append(compiledTemplate);
+                                $('#feed-list-box').append(compiledTemplate);
                             },
                             error : function(collection, response, options){
                                 console.log('error '+JSON.stringify(response));
                             }
                         }
                     );
-                },
-                events : {
-                    //'window scroll' : 'checkScroll'
                 }
-
             }
         );
         return TweekListView;

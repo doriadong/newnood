@@ -192,6 +192,8 @@ input#publish-button {
 
     font-size: 14px;
     font-family: Tahoma, '宋体';
+
+    /*overflow: scroll;*/
 }
 
 

@@ -39,6 +39,7 @@ exports.addTweek = function(req, res){
 exports.getFeedByPage = function(req, res){
     var queryParam = req.query;
     var page = queryParam.page;
+    console.log('page get from front : '+page);
     if(page <= 0){
         page = 1;
     }
@@ -46,8 +47,8 @@ exports.getFeedByPage = function(req, res){
     var start = (page-1)*pageSize;
 
     var query = Tweek.find()
-        .where('userId').gt(4000).lt(8000)
-        .where('commentNum').equals(0)
+        .where('userId').gt(2000).lt(8000)
+        //.where('commentNum').equals(0)
         .skip(start)
         .limit(pageSize)
         .sort('-addTime');
@@ -61,7 +62,7 @@ exports.getFeedByPage = function(req, res){
                 res.writeHead(500, {'Content-type': 'text/json;charset=utf-8'} );
                 res.end({code:500,msg:'getFeedByPage something wrong!'});
             }else{
-                console.log(util.inspect(datas));
+                //console.log(util.inspect(datas));
                 res.writeHead(200, {'Content-type': 'text/json;charset=utf-8'} );
                 res.write(JSON.stringify(datas));
                 res.end();
